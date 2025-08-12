@@ -1,13 +1,14 @@
 # Wonderlands UI Property Explorer
 
-\** Note: I will often use the terms inspect/explore interchangeably throughout this repo.*
-\** Note Two: This does require pak-file modding if you wish to implement this.*
+*Note: I will often use the terms inspect/explore interchangeably throughout this repo.*
+
+*Note Two: This does require pak-file modding if you wish to implement this.*
 
 This repo contains the code fragments for a tool that allows you to inspect/explore the properties available for a given UI element. I wrote this as a way of inspecting the properties available on UI screens, primarily to make it easier for making UI mods. The three files, `PropertyExplorer.js`, `PropertyExplorer.css`, and `PropertyExplorer.html` contain all you'll need to implement this tool. There are more details at the top of each of those files but essentially you just need to copy+paste their contents into the respective files and repak them. You can find more information on pakfile modding [here](https://github.com/BLCM/BLCMods/wiki/Pakfile-Modding).
 
-***Disclaimer:*** This tool is **not** for modifying game data at runtime, it is purely for inspecting what properties exist in the javascript layer of GBX's UI tech stack. If you are looking for a tool that gives you a nice GUI for changing game data on the fly, **this is not it**.
-
 Gearbox has switched over to using Coherent Labs' Prysm with Wonderlands after AutoDesk discontinued support for Scaleform in 2017. I wager Gearbox are going to continue using Prysm for BL4, so this should be a solution for inspecting UI properties in that game as well.
+
+***Disclaimer:*** This tool is **not** for modifying game data at runtime, it is purely for inspecting what properties exist in the javascript layer of GBX's UI tech stack. If you are looking for a tool that gives you a nice GUI for changing game data on the fly, **this is not it**.
 
 ## Example: Implementing the Property Explorer for the Inventory
 *Note: You can find an example of this in the example directory of this repo. You can search the files in there for `VAZU_MOD` to see the code changes.*
@@ -81,6 +82,6 @@ LogPakFile: Display: "js/inventory.js" offset: 220089, size: 35931 bytes, sha1: 
 ```
 Notice how UnrealPak is smart enough to deduce a lower scoped mounting point for our Paks for us. This is why I prefer to mimic the project structure when making mods and leave the ResponseFile to mount at the toplevel. I don't have to worry about a file being mounted incorrectly :)
 
-Once you're verified that your pakfile was created correctly, you can just drop it in your games paks directory, "C:\Program Files\Steam\steamapps\common\Tiny Tina's Wonderlands\OakGame\Content\Paks\" on Windows. However, I personally like to ensure my mods get loaded last so I would add a "~mods\" directory inside of that "Paks\" directory and place my pakfile inside of that. So our pakfile would sit at "..OakGame\Content\Paks\~mods\OurPak_999.pak".
+Once you're verified that your pakfile was created correctly, you can just drop it in your games paks directory, "C:\Program Files\Steam\steamapps\common\Tiny Tina's Wonderlands\OakGame\Content\Paks\" on Windows. However, I personally like to ensure my mods get loaded last so I would add a "~mods\" directory inside of that "Paks\" directory and place my pakfile inside of that. So our pakfile would sit at "..OakGame\Content\Paks\\~mods\OurPak_999.pak".
 
 Once that's down, you should be able to just boot up the game, open the inventory, and see the property explorer, nothing else needed!
