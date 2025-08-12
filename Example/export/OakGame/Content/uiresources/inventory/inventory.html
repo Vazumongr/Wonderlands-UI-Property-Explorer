@@ -1,0 +1,186 @@
+<head>
+</head>
+
+<body>
+  <div class="widget full">
+    <div class="inventory_wrapper hidden">
+		<!-- VAZU_MOD: PROPERTY EXPLORER BEGIN -->
+        <div id="PropertyExplorerContainer" class="infoboxContainer">
+            <div id="BackButton" class="backButton">
+              Back
+            </div>
+            <div id="PathHeader" class="pathHeader">
+              Path:
+            </div>
+            <div id="PathDisplay" class="pathDisplay">
+            </div>
+            <div id="PropertyExplorer" class="propertyExplorer">
+            </div>
+        </div>
+		<!-- VAZU_MOD: PROPERTY EXPLORER END -->
+      <div class="weapons " id="weapons">
+        <div class="scaleEnter">
+          <div class="big_panel">
+            <div class="big_panel_border"></div>
+          </div>
+          <div class="highlightPanel"></div>
+          <div class="weapons_guns_cntr">
+            <div class="weapons_title stroke_black" data-bind-value="{{$data.weaponstitle}}"></div>
+            <div class="weapons_guns_slots">
+              <div class="weapons_guns_slot_melee">
+                <gbx-inventory-item gbx-component-id="melee_weapon"
+                  data-bind-entry-model="{{$data.equipmentdata.meleeentry}}" id="melee_weapon"
+                  gbx-component-datamodel="data_entry:$data.equipmentdata.meleeentry" data-bind-parent="$data"
+                  data-input-elem="true" data-input-id="equip_melee" data-input-link-down="equip_gear"
+                  data-input-link-right="equip_ranged" data-input-link-up="equip_melee">
+                </gbx-inventory-item>
+              </div>
+              <div class="weapons_guns_slot_gun" id="equip_ranged" data-input-elem="true" data-input-id="equip_ranged"
+                data-input-link-down="equip_gear" data-input-link-left="equip_melee" data-input-link-right="backpack">
+                <gbx-inventory-item class="inventory_item" gbx-component-id="inventory_weapon"
+                  data-bind-for="index,entry:{{$data.equipmentdata.gunentries}}" data-bind-entry-model="{{entry}}"
+                  gbx-component-datamodel="data_entry:entry" data-bind-parent="$data">
+                </gbx-inventory-item>
+              </div>
+            </div>
+          </div>
+          <!-- End Weapons -->
+          <!-- Start Gear -->
+          <div class="weapons_gear_cntr">
+            <div class="weapons_gear_title stroke_black" data-bind-value="{{$data.geartitle}}"></div>
+            <div id="weapons_gear" class="weapons_gear" data-input-elem="true" data-input-beh="grid"
+              data-input-id="equip_gear" data-input-link-up="equip_ranged" data-input-link-right="backpack">
+              <gbx-inventory-item data-bind-for="index,entry:{{$data.equipmentdata.gearentries}}"
+                gbx-component-id="gear_item" data-bind-entry-model="{{entry}}"
+                gbx-component-datamodel="data_entry:entry" data-bind-parent="$data">
+              </gbx-inventory-item>
+              <gbx-inventory-item id="weapons_gear_gun_mage"
+                data-bind-if="{{$data.equipmentdata.bshowgunmagespellslot}}" 
+                gbx-component-id="gear_item" data-bind-entry-model="{{$data.equipmentdata.gunmagespellentry}}"
+                gbx-component-datamodel="data_entry:$data.equipmentdata.gunmagespellentry" data-bind-parent="$data">
+              </gbx-inventory-item>
+            </div>
+
+          </div>
+          <!-- End Gear -->
+          <!-- Start Ammo -->
+          <div class="weapons_ammo_cntr stroke_black">
+
+            <div class="divider">
+              <div class="divider_left"></div>
+              <div class="weapons_ammo_title" data-bind-value="{{$data.ammotitle}}"></div>
+              <div class="divider_right"></div>
+            </div>
+
+            <div class="weapons_ammo">
+              <div class="ammo-item" data-bind-class-toggle="no-ammo:{{entry.current}} == 0"
+                data-bind-for="index,entry:{{$data.ammoentries}}">
+                <div data-bind-class={{entry.ident}}></div>
+                <div class="ammo_item_current" data-bind-value="{{entry.currentdisplay}}"></div>
+                <div class="ammo_item_max" data-bind-value="{{entry.maxdisplay}}"></div>
+              </div>
+            </div>
+          </div>
+          <!-- End Ammo -->
+          <gbx-button class="uparrow_split">
+            <div id="inventory_weapons_arrow_up" class="d-hidden- arrow_top"></div>
+          </gbx-button>
+          <gbx-button class="downarrow_split">
+            <div id="inventory_weapons_arrow_down" class="d-hidden- arrow_bottom"></div>
+          </gbx-button>
+        </div>
+      </div>
+      <div class="dropped">
+        <div class="dropped_bg"></div>
+        <div class="dropped_title" data-bind-value="{{$data.droppedtext}}"></div>
+        <div class="dropped_arrow_cntr">
+          <div class="dropped_arrow_s"></div>
+          <div class="dropped_arrow_m"></div>
+          <div class="dropped_arrow_l"></div>
+        </div>
+      </div>
+      <div class="room_decoration">
+        <div class="room_decoration_bg"></div>
+        <div class="room_decoration_title" data-bind-value="{{$data.unlockedtypetext}}"></div>
+        <div class="room_decoration_subtitle" data-bind-value="{{$data.unlockedtext}}"></div>
+        <div class="room_decoration_top">
+          <div class="room_decoration_left"></div>
+          <div class="room_decoration_locked_icon"></div>
+          <div class="room_decoration_right"></div>
+        </div>
+      </div>
+
+
+      <!-- Start GBX Backpack -->
+      <gbx-backpack id="inventory-backpack" gbx-component-id="backpack" data-bind-entry-model="{{$data.backpackdata}}"
+        gbx-component-datamodel="data_backpack:$data.backpackdata" data-bind-parent="$data">
+      </gbx-backpack>
+      <!-- End GBX Backpack -->
+
+      <!-- Start GBX Currency -->
+      <div class="currency stroke_black">
+        <div class="currency_frame_bg">
+        </div>
+        <div class="currency_items"
+          data-bind-class-toggle="warning:{{$data.currency.eridiumamount}} == {{$data.currency.eridiummaxamount}}">
+          <div class="currency_eridium">
+            <div class="currency_icon egc"></div>
+            <div class="currency_eridium_value" data-bind-value="{{$data.currency.eridiumtext}}"></div>
+            <div class="warning_egc">
+              <div class="egc_capwarning">
+              </div>
+            </div>
+          </div>
+          <div class="currency_keys" data-bind-if="!{{$data.currency.displaysouls}}">
+            <div class="currency_icon skeletonkey"></div>
+            <div class="currency_keys_value" data-bind-value="{{$data.currency.keytext}}"></div>
+          </div>
+          <div class="currency_souls" data-bind-if="{{$data.currency.displaysouls}}">
+            <div class="currency_icon souls"></div>
+            <div class="currency_souls_value" data-bind-value="{{$data.currency.soulcantext}}"></div>
+          </div>
+        </div>
+        <div class="currency_value">
+          <span class="currency_icon gold"></span>
+          <p data-bind-value="{{$data.currency.moneytext}}"></p>
+        </div>
+        <div class="currency_keys_container" data-bind-if="{{$data.currency.displaysouls}}">
+          <div class="currency_keys_bg"></div>
+          <div class="currency_keys_content">
+            <div class="currency_icon skeletonkey"></div>
+            <div class="currency_keys_value" data-bind-value="{{$data.currency.keytext}}"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End GBX Currency -->
+
+      <gbx-item-card id="primary-item-card" gbx-component-id="item_card" class="item_card_comp inventory left"
+        data-bind-entry-model="{{$data.primaryitemcard}}"
+        data-bind-class-toggle="d-hidden:!{{$data.primaryitemcard.visible}};isfull:{{$data.primaryitemcard.usefullitemcard}}"
+        gbx-component-datamodel="data_entry:$data.primaryitemcard" data-bind-parent="$data">
+      </gbx-item-card>
+      <gbx-item-card id="primary-item-card-ab" gbx-component-id="item_card_abbreviated"
+        class="item_card_comp_ab inventory left" data-bind-entry-model="{{$data.primaryitemcard}}"
+        data-bind-class-toggle="d-hidden:!{{$data.primaryitemcard.visible}};isfull:{{$data.primaryitemcard.usefullitemcard}}"
+        gbx-component-datamodel="data_entry:$data.primaryitemcard" data-bind-parent="$data">
+      </gbx-item-card>
+
+      <gbx-item-card id="secondary-item-card" gbx-component-id="item_card" class="item_card_comp inventory right"
+        data-bind-entry-model="{{$data.secondaryitemcard}}"
+        data-bind-class-toggle="d-hidden:!{{$data.secondaryitemcard.visible}};isfull:{{$data.secondaryitemcard.usefullitemcard}}"
+        gbx-component-datamodel="data_entry:$data.secondaryitemcard" data-bind-parent="$data">
+      </gbx-item-card>
+      <gbx-item-card id="secondary-item-card-ab" gbx-component-id="item_card_abbreviated"
+        class="item_card_comp_ab inventory right" data-bind-entry-model="{{$data.secondaryitemcard}}"
+        data-bind-class-toggle="d-hidden:!{{$data.secondaryitemcard.visible}};isfull:{{$data.secondaryitemcard.usefullitemcard}}"
+        gbx-component-datamodel="data_entry:$data.secondaryitemcard" data-bind-parent="$data">
+      </gbx-item-card>
+    </div>
+  </div>
+  <link rel="stylesheet" type="text/css" href="inventory/css/inventory.css" />
+  <link rel="stylesheet" type="text/css" href="inventory/css/inventory_weapons.css" />
+  <link rel="stylesheet" type="text/css" href="inventory/css/inventory_horizontal.css" />
+  <link rel="stylesheet" type="text/css" href="inventory/css/inventory_4p.css" />
+  <link rel="stylesheet" type="text/css" href="inventory/css/inventory_vertical.css" />
+  <script src="inventory/js/inventory.js"></script>
+</body>

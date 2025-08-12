@@ -1,0 +1,760 @@
+@keyframes enterPanelCenter {
+	0% {
+		transform:translateX(-50%) scale(0, 0) ;
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-50%) scale(1, 1) ;
+		opacity: 1;
+	}
+}
+@keyframes enterPanel {
+	0% {
+		transform: scale(0, 0);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}
+@keyframes animateHighlight {
+	0% {
+		transform: translateX(0vh);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(20vh);
+		opacity: 0;
+	}
+}
+@keyframes enterHeader {
+	0% {
+		transform: translateX(-50%) translateY(100%) scale(1, 1);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-50%) translateY(0%) scale(1, 1);
+		opacity: 1;
+	}
+}
+@keyframes enterHeaderVertical {
+	0% {
+		transform: translateX(-50%) translateY(100%) scale(.7);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-50%) translateY(0%) scale(.7);
+		opacity: 1;
+	}
+}
+
+@keyframes newBeatingMelee {
+	0%, 40%, 100% {
+		transform: rotateX(0) rotateZ(90deg) scale(0.9, 0.9);
+	}
+	25%, 60% {
+		transform: rotateX(0) rotateZ(90deg) scale(1.15, 1.15);
+	}
+}
+@keyframes blinkingJunkMelee {
+	0%, 70%, 100% {
+		transform: rotateX(0) rotateZ(90deg) scale(0.85, 0.85);
+	}
+	80% {
+		transform: rotateX(0) rotateZ(90deg) scale(1, 1);
+	}
+}
+@keyframes blinkingMelee {
+	0%, 70%, 100% {
+		transform: rotateX(0) rotateZ(90deg) scale(0.85, 0.85);
+	}
+	80% {
+		transform: rotateX(0) rotateZ(90deg) scale(1, 1);
+	}
+}
+@keyframes lockedExplotionMelee {
+	0% {
+		transform: translate(-50%, -50%) scale(1, 1);
+	}
+	5%, 15%, 25%, 35%, 45%, 55%, 65% {
+		transform: translate(-48%, -48%) scale(1, 1) rotateX(0) rotateZ(90deg);
+	}
+	10%, 30%, 50%, 60% {
+		transform: translate(-52%, -52%) scale(1, 1) rotateX(0) rotateZ(90deg);
+	}
+	20% {
+		transform: translate(-50%, -50%) scale(1, 1) rotateX(0) rotateZ(90deg);
+	}
+	60% {
+		transform: translate(-50%, -50%) scale(1, 1) rotateX(0) rotateZ(90deg);
+	}
+	70% {
+		transform: translate(-50%, -50%) scale(0.9, 0.9) rotateX(0) rotateZ(90deg);
+	}
+	80% {
+		transform: translate(-50%, -50%) scale(1.5, 1.5) rotateX(0) rotateZ(90deg);
+	}
+	90% {
+		transform: translate(-50%, -50%) scale(1.5, 1.5) rotateX(0) rotateZ(90deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1.8, 1.8) rotateX(0) rotateZ(90deg);
+		opacity: 0;
+	}
+}
+@keyframes beatingCenteredMelee {
+	0%, 70%, 100% {
+		transform: translate(-50%, -50%) scale(0.85, 0.85) rotateX(0) rotateZ(90deg);
+	}
+	80% {
+		transform: translate(-50%, -50%) scale(1, 1) rotateX(0) rotateZ(90deg);
+	}
+}
+
+/* VFX */
+
+/* @keyframes fxWeaponElectricity {
+	0% {
+		background-position-x: 0vh;
+		opacity: 0;
+	}
+	100% {
+		background-position-x: -256vh;
+		opacity: 1;
+	}
+}
+@keyframes fxWeaponGearElectricity {
+	0% {
+		background-position-x: 0vh;
+		opacity: 0;
+	}
+	100% {
+		background-position-x: -360vh;
+		opacity: 1;
+	}
+}
+@keyframes fxWeaponSpellElectricity {
+	0% {
+		background-position-x: 0vh;
+	}
+	100% {
+		background-position-x: -240vh;
+	}
+}
+@keyframes fxWeaponBackElectricity {
+	0% {
+		background-position-x: 0vh;
+		opacity: 0;
+	}
+	100% {
+		background-position-x: -440vh;
+		opacity: 1;
+	}
+} */
+
+.weapons .highlightPanel {
+	left: 12vh;
+	top: 2.2vh;
+	/* animation-name: animateHighlight; */
+	animation-duration: .8s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	opacity: 0;
+}
+
+.backpack .highlightPanel {
+	left: 12vh;
+	top: 3.3vh;
+	/* animation-name: animateHighlight; */
+	animation-duration: .8s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	/* opacity: 0; */
+}
+
+.currency {	
+	/* animation-name: enterPanelCenter; */
+	animation-duration: .5s;
+	animation-delay: .3s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	/* opacity: 0; */
+}
+.backpack,
+.weapons {	
+	/* animation-name: enterPanel,fadeIn; */
+	animation-duration: .5s,.5s;
+	animation-delay: .3s,.3s;
+	animation-fill-mode: none,forwards;
+	animation-timing-function: ease-out,ease-out;
+	/* opacity: 0; */
+}
+.weapons .scaleEnter {
+	display: flex;
+	transition-property: transform;
+	transition-duration: 0.2s;
+	width: 100%;
+    height: 100%;
+}
+.backpack.selected .scaleEnter,
+.weapons.selected .scaleEnter {
+	transform: scale(1.03, 1.03);
+}
+.backpack_frame_header {	
+	/* animation-name: enterHeader; */
+	animation-duration: .3s;
+	animation-delay: .8s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	/* opacity: 0; */
+}
+.inventory_wrapper {
+	height: 100%;
+	left: 50%;
+	max-width: 177.77vh;
+	position: absolute;
+	top: 0vh;
+	transform: translateX(-50%);
+	isolation: isolate;
+	width: 100%;
+}
+.backpack {
+	height: 63.4vh;
+}
+.currency_orbs_value,
+.currency_souls_value {
+	font-family:  var(--header-font) ;
+}
+
+.currency_value p {
+	margin-left: 0.5vh;
+}
+.currency_eridium, 
+.currency_keys,
+.currency_souls {
+	display: flex;
+	align-items: center;
+}
+.currency_souls {
+	margin-top: .3vh;
+}
+.currency_icon.skeletonkey {
+	transform-origin: left;
+	transform: scale(.8) translateX(.2vh);
+}
+.currency_icon.souls {
+	transform: scale(.8) translateX(-.5vh);
+}
+.currency_icon.egc {
+	transform: scale(.8) translateX(-.2vh);
+	transform-origin: left;
+	margin-left: 0.1vh;
+	margin-right: -0.1vh !important;
+}
+.currency {
+	bottom: 12.3vh;
+	transform: translateX(-50%);
+}
+.weapons_title,
+.weapons_gear_title {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	top: 0vh;
+}
+.weapons_title,
+.weapons_gear_title,
+.weapons_ammo_title {
+	text-align: center;
+	color: #9a815b;
+	font-size: 2.6rem;
+	font-family: var(--header-font);
+	letter-spacing: 0.2rem;
+	line-height: 1em;
+	font-weight: bold;
+}
+.weapons_ammo_title {
+	flex: 0 1 auto;
+    coh-font-fit-mode: shrink;
+    padding-left: 0.6vh;
+    padding-right: 0.6vh;
+    display: flex;
+    align-items: center;
+	justify-content: center;
+}
+.weapons_ammo_cntr .divider_left,
+.weapons_ammo_cntr .divider_right {
+	background-size: contain;
+	background-position-x: 50%;
+	background-position-y: 50%;
+	flex: 0 1 auto;
+}
+.dropped {
+	height: 14.4vh;
+	position: absolute;
+	pointer-events: none;
+	right: 11.4vh;
+	top: 30vh;
+	width: 38vh;
+	z-index: 8;
+	opacity: 0;
+}
+.dropped.droppedin {
+	animation-name: droppedEntrance;
+	animation-duration: 1.2s;
+	animation-delay: 0.5s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	opacity: 1;
+}
+
+.dropped.droppedout {
+	animation-name: fadeOut;
+	animation-duration: 0.1s;
+	animation-delay: 0s;
+}
+.dropped.weapons_side,
+.dropped.gear_side {
+	left: 12vh;
+}
+.dropped.gear_side {
+	transform: translateY(30vh);
+}
+.dropped_title {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%) scale(1, 1);
+	top: 2.4vh;
+	z-index: 1;
+}
+.dropped_title {
+	animation-name: droppedTitleEntrance;
+	animation-duration: 0.4s;
+	animation-delay: 0.1s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	color: #cbcbd8;
+	font-size: 5.8rem;
+	font-family: var(--header-font);
+	letter-spacing: 0.2rem;
+	text-align: center;
+	line-height: 1;
+}
+
+.dropped_bg,
+.dropped_arrow_l,
+.dropped_arrow_m,
+.dropped_arrow_s,
+.dropped_arrow_l_clone,
+.dropped_arrow_m_clone,
+.dropped_arrow_s_clone {
+	position: absolute;
+	transform-origin: center;
+	transform: scale(1, 1);
+	background-image: url("../../_shared/assets/inventory_components/BackpackEvents_Sprites.png");
+	background-repeat: no-repeat;
+	background-size: 38vh 19.7vh;
+}
+.dropped_bg {
+	animation-name: fadeIn;
+	animation-duration: 0.08s;
+	animation-delay: 0.42s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+.dropped_arrow_cntr,
+.dropped_arrow_clone_cntr {
+	bottom: 1vh;
+	height: 6vh;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%) scale(1, 1);
+	width: 6vh;
+}
+.dropped_arrow_cntr {
+	animation-name: droppedArrows;
+	animation-duration: 1s;
+	animation-delay: 0.5s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+.dropped_arrow_clone_cntr {
+	animation-name: droppedCloneArrows;
+	animation-duration: 0.8s;
+	animation-delay: 0.42s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+.dropped_arrow_l,
+.dropped_arrow_m,
+.dropped_arrow_s,
+.dropped_arrow_l_clone,
+.dropped_arrow_m_clone,
+.dropped_arrow_s_clone {
+	background-position: -0.5vh -1.2vh;
+	background-size: 46vh 23.8vh;
+	height: 4.2vh;
+	width: 6.2vh;
+}
+.dropped_arrow_l,
+.dropped_arrow_l_clone {
+	bottom: 0vh;
+	transform: scale(1, 1);
+}
+.dropped_arrow_m,
+.dropped_arrow_m_clone {
+	bottom: 1.6vh;
+	transform: scale(0.7, 0.7);
+}
+.dropped_arrow_s,
+.dropped_arrow_s_clone {
+	bottom: 2.8vh;
+	transform: scale(0.5, 0.5);
+}
+.dropped_bg {
+	background-position: 0vh -5.2vh;
+	height: 14.4vh;
+	left: 0vh;
+	top: 0vh;
+	width: 38vh;
+	z-index: -1;
+}
+.room_decoration {	
+	height: 20vh;
+	position: absolute;
+	pointer-events: none;
+	right: 3.8vh;
+	top: 30vh;
+	width: 54vh;
+	z-index: 8;
+	opacity: 0;
+}
+.room_decoration.roomin {
+	animation-name: fadeIn;
+	animation-duration: 0.1s;
+	animation-delay: 0.3s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	opacity: 1;
+}
+.room_decoration.roomout {
+	animation-name: fadeOut;
+	animation-duration: 0.1s;
+	animation-delay: 0s;
+}
+.room_decoration_title,
+.room_decoration_subtitle {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	text-align: center;
+	line-height: 1;
+	z-index: 1;
+}
+.room_decoration_title {
+	top: 7.4vh;
+	animation-name: roomGoldGlowing,roomTitleEntrance;
+	animation-duration: 0.5s,0.8s;
+	animation-delay: 1.3s,0.3s;
+	animation-timing-function: ease,ease;
+	animation-fill-mode: both,both;
+	animation-iteration-count: 1,1;
+	font-size: 5.8rem;
+	font-family: var(--header-font);
+	letter-spacing: 0.2rem;
+}
+.room_decoration_subtitle {
+	animation-name: roomSubtitleEntrance;
+	animation-duration: 0.5s;
+	animation-delay: 1.1s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	top: 13.2vh;
+	color: #c79c6f;
+	font-size: 3rem;
+	font-family: var(--body-font);
+}
+.room_decoration_bg,
+.room_decoration_left,
+.room_decoration_right,
+.room_decoration_locked_icon {
+	background-image: url("../../_shared/assets/inventory_components/BackpackEvents_Sprites.png");
+	background-repeat: no-repeat;
+	background-size: 54vh 27.9vh;
+	position: absolute;
+	transform-origin: center;
+	transform: scale(1, 1);
+}
+.room_decoration_bg {
+	background-position: 0vh -7.6vh;
+	filter: grayscale(100%);
+	top: 0vh;
+	left: 0vh;
+	height: 20vh;
+	width: 54vh;
+}
+.room_decoration_top {
+	left: 50%;
+	position: absolute;
+	top: 0vh;
+	transform: translateX(-50%);
+	z-index: 1;
+	height: 7vh;
+	width: 30vh;
+}
+.room_decoration_left,
+.room_decoration_right {
+	animation-name: fadeIn;
+	animation-duration: 0.1s;
+	animation-delay: 0.4s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+	bottom: 0.2vh;
+	height: 2.5vh;
+	transform: scale(1, 1);
+	width: 12.4vh;
+}
+.room_decoration_left {
+	background-position: -15.6vh -2.7vh;
+	left: 0vh;
+}
+.room_decoration_right {
+	background-position: -29.6vh -2.7vh;
+	right: 0vh;
+}
+.room_decoration_locked_icon {
+	animation-name: lockedExplotion;
+	animation-duration: 1s;
+	animation-delay: 0.2s;
+	animation-timing-function: ease;
+	animation-iteration-count: 1;
+	background-position: -8.8vh -0.4vh;
+	height: 6.8vh;
+	left: 50%;
+	opacity: 0;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(1, 1);
+	width: 5.2vh;
+}
+.spell_item_img {
+	background-size: 4.1vh 4.8vh;
+	height: 4.8vh;
+	width: 4.1vh;
+}
+.weapons {
+	height: 81.2vh;
+	left: 6vh;
+	position: absolute;
+	top: 8.4vh;
+	width: 44.4vh;
+}
+.weapons .divider {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 3.2vh;
+	padding-right: 3.4vh;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+.weapons .big_panel {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: -1;
+	isolation: isolate;
+}
+.weapons_ammo {
+	justify-content: center;
+    flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%) scale(1, 1);
+	top: 3vh;
+	width: 38vh;
+}
+.ammo-item {
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	width: 5.4vh;
+	height: 6.4vh;
+	margin: 0vh 0.2vh;
+	padding: 0vh 0.2vh;
+}
+.ammo_item_current,
+.ammo_item_max {
+	height: 1.6vh;
+	display: flex;
+	align-items: center;
+	color: #57576d;
+	font-size: 1.8rem;
+	font-family: var(--body-font);
+	letter-spacing: 0rem;
+	line-height: 1;
+	text-align: center;
+}
+.inventory_wrapper .ammo_item_current,
+.inventory_wrapper .ammo_item_max {
+	coh-font-fit-mode: fit;
+}
+.ammo-item.no-ammo .AssaultRifle,
+.ammo-item.no-ammo .Pistol,
+.ammo-item.no-ammo .SMG,
+.ammo-item.no-ammo .Shotgun,
+.ammo-item.no-ammo .Sniper,
+.ammo-item.no-ammo .Heavy {
+    filter: coh-color-matrix(0.350, 0.000, 0.000, 0.000, 0.490, 0.000, 0.350, 0.000, 0.000, 0.000, 0.000, 0.000, 0.350, 0.000, 0.000, 0.000, 0.000, 0.000, 1.000, 0.000);
+}
+.ammo-item.no-ammo .ammo_item_current,
+.ammo-item.no-ammo .ammo_item_max {
+	color: #ff0000;
+}
+.ammo-item .AssaultRifle,
+.ammo-item .Pistol,
+.ammo-item .SMG,
+.ammo-item .Shotgun,
+.ammo-item .Sniper,
+.ammo-item .Heavy {
+	margin-bottom: 0.3vh;
+	height: 1.8vh;
+	width: 4.4vh;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.ammo-item .AssaultRifle {
+	background-image: url("../../_shared/assets/icons/AssaultRifleAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 5.37vh;
+	height: 1.85vh;
+}
+.ammo-item .Pistol {
+	background-image: url("../../_shared/assets/icons/PistolAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 2.96vh;
+	height: 2.22vh;
+}
+.ammo-item .SMG {	
+	background-image: url("../../_shared/assets/icons/SMGAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 3.88vh;
+	height: 2.22vh;
+}
+.ammo-item .Shotgun {
+	background-image: url("../../_shared/assets/icons/ShotgunAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 5.18vh;
+	height: 1.66vh;
+}
+.ammo-item .Sniper {	
+	background-image: url("../../_shared/assets/icons/SniperAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 5.18vh;
+	height: 1.66vh;
+}
+.ammo-item .Heavy {
+	background-image: url("../../_shared/assets/icons/HeavyAmmoIcon.png");
+	background-repeat: no-repeat;
+	width: 4.81vh;
+	height: 2.22vh;
+}
+.warning_egc {
+	position: relative;
+	opacity: 0;
+}
+.warning  .warning_egc {
+	opacity: 1;
+}
+.left .item_card,
+.right .item_card {
+	transition-duration: .2s;
+	transition-property: transform;
+	transform: none;
+	pointer-events: none;
+	top: 15vh;
+	width: 54.6vh;
+}
+.left .item_card{
+	left: 48vh;
+}
+.right .item_card {
+	left: initial;
+	right: 48vh;
+}
+.item_card_abbreviated{
+	isolation: isolate;
+	display: none;
+	top: 15vh;
+}
+@media (min-width: 184.0843720038vh) and (orientation:landscape) {
+	.split-horizontal .inventory_wrapper,
+	.split-4p .inventory_wrapper {
+		max-width: 257.72vh;
+	}
+}
+.backpack .bigpanel_content_container,
+.backpack .bigpanel_content_parent {
+	overflow-y: visible;
+}
+.loc-th .weapons.selected .weapons_title { 
+	top: -0.4em;
+}
+.loc-th .weapons_ammo_title {
+	line-height: 180%;
+    margin-top: -0.3em;
+    margin-bottom: -0.3em;
+}
+
+/* VAZU_MOD: PROPERTY EXPLORER BEGIN */
+.infoboxContainer {
+    align-self: center; 
+    justify-content: center;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 50px; 
+    height: 70vh;
+	width: 40%;
+    background-color:rgb(63, 63, 63);
+    font-size: 25px;
+}
+
+.backButton {
+    align-self: center; 
+    padding: 10px; 
+}
+
+.pathDisplay {
+	white-space: wrap;
+	overflow-wrap: break-word;
+}
+
+.propertyExplorer {
+    align-self: center; 
+    justify-content: center;
+    padding: 10px; 
+	overflow-x: wrap;
+    overflow-y: scroll;
+    height: 55vh;
+	max-width: 100%;
+    background-color:rgb(148, 148, 148);
+}
+/* VAZU_MOD: PROPERTY EXPLORER END */

@@ -1,0 +1,45 @@
+/** 
+ *	This is meant to be copy+pasted into the .css file
+ *	That corresponds to whatever HTML file you have edited.
+ *	OR you could create a separate .css file and link it
+ *	at the bottom of the HTML file but you must make sure it
+ *	follows the same directory structure.
+ *
+ *	I'm also not a web-dev, so this definitely isn't pretty.
+ *	It functions tho.
+ */
+
+.infoboxContainer {
+    align-self: center; 
+    justify-content: center;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 50px; 
+    height: 70vh;
+	width: 40%;
+    background-color:rgb(63, 63, 63);
+    font-size: 25px;
+}
+
+.backButton {
+    align-self: center; 
+    padding: 10px; 
+}
+
+.pathDisplay {
+	white-space: wrap;
+	overflow-wrap: break-word;
+}
+
+.propertyExplorer {
+    align-self: center; 
+    justify-content: center;
+    padding: 10px; 
+	overflow-x: wrap;
+    overflow-y: scroll;
+    height: 55vh;
+	max-width: 100%;
+    background-color:rgb(148, 148, 148);
+}
