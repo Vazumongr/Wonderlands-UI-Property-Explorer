@@ -827,6 +827,7 @@ class PropertyExplorerObject
         this.ArrayProxyTypeString = 'CoherentArrayProxy';
         this.UpdatePropertyExplorer();
     }
+
     /** More detailed Type function. Pulled from MDN docs
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
      */
@@ -912,11 +913,17 @@ class PropertyExplorerObject
             entries = Object.entries(prop);
             loopEntries = Object.entries(prop);
         }
+        // Might have gotten a primitive from a function call, display it
+        else if (basicType === 'number' || basicType === 'string' || basicType === 'boolean')
+        {
+            entries = [[basicType, prop]];
+            loopEntries = [[basicType, prop]];
+        }
         // If what we are trying to evaluate is undefined, display a notice.
         // Will primarily happen for functions with no return value.
         else if (basicType === 'undefined')
         {
-            entries = [['Notice:', 'Value is undefined']];
+            entries = [['Notice', 'Value is undefined']];
         }
         // Whatever we are trying to evaluate isn't supported, take it off the stack and return
         else
@@ -935,6 +942,8 @@ class PropertyExplorerObject
         }
     }
 
+	// Takes in an array of [Key,Value] pairs where the Key is the
+	// identifier and the value is well, the value.
     GenerateHTMLFromEntries(entries)
     {
         let ele = "div";

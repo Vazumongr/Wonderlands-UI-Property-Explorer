@@ -119,11 +119,17 @@ class PropertyExplorerObject
             entries = Object.entries(prop);
             loopEntries = Object.entries(prop);
         }
+        // Might have gotten a primitive from a function call, display it
+        else if (basicType === 'number' || basicType === 'string' || basicType === 'boolean')
+        {
+            entries = [[basicType, prop]];
+            loopEntries = [[basicType, prop]];
+        }
         // If what we are trying to evaluate is undefined, display a notice.
         // Will primarily happen for functions with no return value.
         else if (basicType === 'undefined')
         {
-            entries = [['Notice:', 'Value is undefined']];
+            entries = [['Notice', 'Value is undefined']];
         }
         // Whatever we are trying to evaluate isn't supported, take it off the stack and return
         else
