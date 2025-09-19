@@ -18,6 +18,8 @@ You can click on properties to inspect them further, but if they are primitives 
 
 When calling functions, if they return nothing (undefined), you will see the property explorer inform you with "Notice: Object is undefined." Everything else should be handled normally.
 
+![Demo](https://github.com/Vazumongr/Wonderlands-UI-Property-Explorer/blob/main/Images/propexplorertrim.gif)
+
 ***Disclaimer:*** This tool is **not** for modifying game data at runtime, it is purely for inspecting what properties exist in the javascript layer of GBX's UI tech stack. If you are looking for a tool that gives you a nice GUI for changing game data on the fly, **this is not it**.
 
 ## Example: Implementing the Property Explorer for the Inventory
